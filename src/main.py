@@ -13,7 +13,7 @@ def main(argv : List[str])->None:
     parser = argparse.ArgumentParser(
                         prog='sysdoc',
                         description='fetch syscalls documentations',
-                        epilog="See 'omg --sysdoc' to get further help")
+                        epilog="Check 'https://man7.org/linux/man-pages/man2' to read more documentation")
 
     # add arguments
     parser.add_argument("syscall_proxy",help="display the syscall's documentation",type=str,nargs='?',default=None)

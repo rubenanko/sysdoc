@@ -26,4 +26,7 @@ def format_syscall(syscall):
         args += f"\n\x1b[38;5;{REGISTERS_COLOR_CODES[i]}m" + REGISTERS[syscall["arch"]][f"arg{i}"] + "\x1b[0;0m\t" + " ".join(argument)
         i += 1
 
-    return f'{header}\x1b[1;35m{syscall["arch"]}\x1b[0;0m\t\x1b[1;37m{syscall["nr"]}\x1b[0;0m\t\x1b[1;34m{syscall["name"]}\x1b[0;0m\n\n{args}'
+    if syscall["arch"] == "x64":
+        link = f'\n\nhttps://man7.org/linux/man-pages/man2/{syscall["name"]}.2.html'
+
+    return f'{header}\x1b[1;35m{syscall["arch"]}\x1b[0;0m\t\x1b[1;37m{syscall["nr"]}\x1b[0;0m\t\x1b[1;34m{syscall["name"]}\x1b[0;0m\n\n{args}{link}'
